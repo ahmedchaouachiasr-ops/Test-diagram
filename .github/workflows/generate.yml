@@ -1,0 +1,21 @@
+name: Generate Diagrams
+
+on: [push]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install PlantUML
+        run: sudo apt-get install -y plantuml
+      
+      - name: Generate PNG
+        run: plantuml -tpng docs/diagrams/*.puml
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagrams
+          path: docs/diagrams/*.png
