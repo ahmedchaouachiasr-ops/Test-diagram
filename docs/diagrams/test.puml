@@ -1,0 +1,4 @@
+@startuml
+Client -> Serveur : Requête
+Serveur --> Client : Réponse
+@enduml
